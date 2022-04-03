@@ -1,0 +1,19 @@
+{
+  "name": "review-scanner-2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.6.3"
+  },
+  "dependencies": {
+    "graphql-request": "^4.2.0",
+    "nodeplotlib": "^1.0.1"
+  }
+}

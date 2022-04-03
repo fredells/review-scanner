@@ -1,0 +1,55 @@
+query Reviews($cursor: String) {
+  repository(owner: "", name: "") {
+    pullRequests(first: 50, after: $cursor, orderBy: {field: CREATED_AT, direction: DESC}, states: [MERGED]) {
+      pageInfo {
+        startCursor
+        endCursor
+      }
+      edges {
+        node {
+          number
+          title
+          createdAt
+          mergedAt
+          additions
+          deletions
+          reviewRequests(first: 50) {
+            edges {
+              node {
+                asCodeOwner
+                requestedReviewer {
+                  ... on Team {
+                    slug
+                    members(first: 50) {
+                      edges {
+                        node {
+                          login
+                        }
+                      }
+                    }
+                  }
+                  ... on User {
+                    login
+                  }
+                }
+              }
+            }
+          }
+          reviews(first: 50) {
+            edges {
+              node {
+                publishedAt
+                state
+                author {
+                  ... on User {
+                    login
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
